@@ -14,17 +14,21 @@ public class Cuadrado extends FigurasGeometricas {
 
     //Variables que guardan los valores de los lados del cuadrado 
     private double lado1, lado2, lado3, lado4;
+    private double coordenadaXD, coordenadaYD;
 
     //Constructor de la clase
-    public Cuadrado(double coordenadaXA, double coordenadaYA, double coordenadaXB, double coordenadaYB, double coordenadaXC, double coordenadaYC) {
+    public Cuadrado(double coordenadaXA, double coordenadaYA, double coordenadaXB, double coordenadaYB, double coordenadaXC, double coordenadaYC, double coordenadaXD, double coordenadaYD) {
         super(coordenadaXA, coordenadaYA, coordenadaXB, coordenadaYB, coordenadaXC, coordenadaYC);
+        this.coordenadaXD = coordenadaXD;
+        this.coordenadaYD = coordenadaYD;
+
     }
 
     public void hallarDatos() {
         lado1 = hallarLado(this.getCoordenadaXA(), this.getCoordenadaYA(), this.getCoordenadaXB(), this.getCoordenadaYB());
         lado2 = hallarLado(this.getCoordenadaXB(), this.getCoordenadaXC(), this.getCoordenadaYB(), this.getCoordenadaYC());
-        lado3 = lado1;
-        lado4 = lado2;
+        lado3 = hallarLado(this.getCoordenadaXC(), this.getCoordenadaXD(), this.getCoordenadaYC(), this.getCoordenadaYD());
+        lado4 = hallarLado(this.getCoordenadaXD(), this.getCoordenadaXA(), this.getCoordenadaYD(), this.getCoordenadaYA());
         this.setArea(lado1 * lado2);
         this.setPerimetro(lado1 + lado2 + lado3 + lado4);
         hallarTipo();
@@ -70,11 +74,34 @@ public class Cuadrado extends FigurasGeometricas {
         this.lado4 = lado4;
     }
 
+    //Metodo Get de la CoordenaXD de la figura
+    public double getCoordenadaXD() {
+        return coordenadaXD;
+    }
+
+    //Metodo set de la CoordenaXD de la figura
+    public void setCoordenadaXD(double coordenadaXD) {
+        this.coordenadaXD = coordenadaXD;
+    }
+
+    //Metodo get de la CoordenaYD de la figura
+    public double getCoordenadaYD() {
+        return coordenadaYD;
+    }
+
+    //Metodo set de la CoordenaYD de la figura
+    public void setCoordenadaYD(double coordenadaYD) {
+        this.coordenadaYD = coordenadaYD;
+    }
+
     public void hallarTipo() {
         if (lado1 == lado2 && lado2 == lado3 && lado3 == lado4) {
-            this.setTipo("Cuadrado cuadrado");
+            this.setTipo("Cuadrado");
+        } else if (lado1 == lado3 && lado2 == lado4) {
+            this.setTipo("Rectangulo");
         } else {
-            this.setTipo("No es cuadrado");
+            this.setTipo("No es una figura de la clase");
+
         }
 
     }
