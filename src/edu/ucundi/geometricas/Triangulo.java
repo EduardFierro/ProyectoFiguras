@@ -12,7 +12,7 @@ package edu.ucundi.geometricas;
 public class Triangulo extends FigurasGeometricas{
     
     //Variables que gusradan el valor de los lados del triangulo
-    double lado1, lado2, lado3;
+    int lado1, lado2, lado3;
     //Constructor
     public Triangulo(double coordenadaXC, double coordenadaYC, double coordenadaXA, double coordenadaYA, double coordenadaXB, double coordenadaYB) {
         super(coordenadaXA, coordenadaYA, coordenadaXB, coordenadaYB, coordenadaXC, coordenadaYC);
@@ -20,9 +20,9 @@ public class Triangulo extends FigurasGeometricas{
     }
     
     public void hallarDatos() {
-        lado1 = hallarLado(this.getCoordenadaXA(), this.getCoordenadaYA(), this.getCoordenadaXB(), this.getCoordenadaYB());
-        lado2 = hallarLado(this.getCoordenadaXB(), this.getCoordenadaYB(), this.getCoordenadaXC(), this.getCoordenadaYC());
-        lado3 = hallarLado(this.getCoordenadaXC(), this.getCoordenadaYC(), this.getCoordenadaXA(), this.getCoordenadaYA());
+        lado1 = (int) hallarLado(this.getCoordenadaXA(), this.getCoordenadaYA(), this.getCoordenadaXB(), this.getCoordenadaYB());
+        lado2 = (int) hallarLado(this.getCoordenadaXB(), this.getCoordenadaYB(), this.getCoordenadaXC(), this.getCoordenadaYC());
+        lado3 = (int) hallarLado(this.getCoordenadaXC(), this.getCoordenadaYC(), this.getCoordenadaXA(), this.getCoordenadaYA());
         this.setPerimetro(lado1+lado2+lado3);
         hallarAreaTriangulo();
         hallarTipo();
@@ -44,7 +44,7 @@ public class Triangulo extends FigurasGeometricas{
     }
 
     //Metodo set del primer lado
-    public void setLado1(double lado1) {
+    public void setLado1(int lado1) {
         this.lado1 = lado1;
     }
 
@@ -54,7 +54,7 @@ public class Triangulo extends FigurasGeometricas{
     }
 
     //Metodo set del segundo lado
-    public void setLado2(double lado2) {
+    public void setLado2(int lado2) {
         this.lado2 = lado2;
     }
 
@@ -64,7 +64,7 @@ public class Triangulo extends FigurasGeometricas{
     }
 
     //Metodo set del tercer lado
-    public void setLado3(double lado3) {
+    public void setLado3(int lado3) {
         this.lado3 = lado3;
     }
 
@@ -72,10 +72,10 @@ public class Triangulo extends FigurasGeometricas{
         if(lado1 == lado2 && lado1==lado3 && lado2 ==lado3){
             this.setTipo("Triangulo Equilatero");
         }
-        if(lado1 == lado2 || lado1 == lado3 || lado2 == lado3){
+        else if(lado1 == lado2 || lado1 == lado3 || lado2 == lado3){
             this.setTipo("Triangulo Isosceles");
         }
-        if(lado1 != lado2 && lado1 != lado3 && lado2 != lado3){
+        else if(lado1 != lado2 && lado1 != lado3 && lado2 != lado3){
             this.setTipo("Triangulo Escaleno");
         }
     }
