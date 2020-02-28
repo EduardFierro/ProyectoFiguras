@@ -9,50 +9,49 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 /**
- * Clase Hija Triangulo 
+ * Clase Hija Triangulo
+ *
  * @author Eduard Fierro, Arley Rivera
  */
-public class Triangulo extends FigurasGeometricas{
-    
+public class Triangulo extends FigurasGeometricas {
+
     //Variables que gusradan el valor de los lados del triangulo
     int lado1, lado2, lado3;
+
     //Constructor
-    public Triangulo(double coordenadaXC, double coordenadaYC, double coordenadaXA, double coordenadaYA, double coordenadaXB, double coordenadaYB, String color) {
-        super(coordenadaXA, coordenadaYA, coordenadaXB, coordenadaYB, coordenadaXC, coordenadaYC, color);
-        
+
+    public Triangulo(double coordenadaXA, double coordenadaYA, double coordenadaXB, double coordenadaYB, double coordenadaXC, double coordenadaYC, String color) {
+        super(coordenadaXA, coordenadaYA, coordenadaXB, coordenadaYB, coordenadaXC, coordenadaYC, 0, 0, color);
+
     }
-    
+
     public void hallarDatos() {
         lado1 = (int) hallarLado(this.getCoordenadaXA(), this.getCoordenadaYA(), this.getCoordenadaXB(), this.getCoordenadaYB());
         lado2 = (int) hallarLado(this.getCoordenadaXB(), this.getCoordenadaYB(), this.getCoordenadaXC(), this.getCoordenadaYC());
         lado3 = (int) hallarLado(this.getCoordenadaXC(), this.getCoordenadaYC(), this.getCoordenadaXA(), this.getCoordenadaYA());
-        this.setPerimetro(lado1+lado2+lado3);
+        this.setPerimetro(lado1 + lado2 + lado3);
         hallarAreaTriangulo();
         hallarTipo();
+        
+        FigurasGeometricas frame = new FigurasGeometricas(this);
+        frame.setVisible(true);
     }
+
     //Metodo que halla el area de la figura
-    public void hallarAreaTriangulo(){
-        double semiperimetro = (lado1 + lado2 + lado3) / 2;        
+
+    public void hallarAreaTriangulo() {
+        double semiperimetro = (lado1 + lado2 + lado3) / 2;
         double ladoAux1 = semiperimetro - lado1;
         double ladoAux2 = semiperimetro - lado2;
         double ladoAux3 = semiperimetro - lado3;
-        
-        double area =  Math.sqrt((semiperimetro * ladoAux1 * ladoAux2 * ladoAux3));
+
+        double area = Math.sqrt((semiperimetro * ladoAux1 * ladoAux2 * ladoAux3));
         this.setArea(area);
     }
-    //Metodo para pintar
-   public void paint(Graphics g) {
-        super.paint(g);
-        g.setColor (Color.red);
-        g.drawLine((int)super.getCoordenadaXA()*100, (int)super.getCoordenadaYA()*100, (int)super.getCoordenadaXB()*100, (int)super.getCoordenadaYB()*100);
-        g.drawLine((int)super.getCoordenadaXB()*100, (int)super.getCoordenadaYB()*100, (int)super.getCoordenadaXC()*100, (int)super.getCoordenadaYC()*100);
-        g.drawLine((int)super.getCoordenadaXC()*100, (int)super.getCoordenadaYC()*100, (int)super.getCoordenadaXA()*100, (int)super.getCoordenadaYA()*100);
+    
 
-        /*int [] vx2 = {(int)super.getCoordenadaXA()*100,(int)super.getCoordenadaXB()*100, (int)super.getCoordenadaXC()*100};
-        int [] vy2 = {(int)super.getCoordenadaYA()*100, (int)super.getCoordenadaYB()*100, (int)super.getCoordenadaYC()*100};
-        g.fillPolygon (vx2, vy2, 3);*/
-    }
     //Metodo get del primer lado
+
     public double getLado1() {
         return lado1;
     }
@@ -83,16 +82,13 @@ public class Triangulo extends FigurasGeometricas{
     }
 
     public void hallarTipo() {
-        if(lado1 == lado2 && lado1==lado3 && lado2 ==lado3){
+        if (lado1 == lado2 && lado1 == lado3 && lado2 == lado3) {
             this.setTipo("Triangulo Equilatero");
-        }
-        else if(lado1 == lado2 || lado1 == lado3 || lado2 == lado3){
+        } else if (lado1 == lado2 || lado1 == lado3 || lado2 == lado3) {
             this.setTipo("Triangulo Isosceles");
-        }
-        else if(lado1 != lado2 && lado1 != lado3 && lado2 != lado3){
+        } else if (lado1 != lado2 && lado1 != lado3 && lado2 != lado3) {
             this.setTipo("Triangulo Escaleno");
         }
     }
-    
-    
+
 }

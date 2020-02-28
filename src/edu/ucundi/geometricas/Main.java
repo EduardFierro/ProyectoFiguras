@@ -9,21 +9,13 @@ import java.awt.EventQueue;
 
 /**
  * Clase Main de ejecucion del programa
+ *
  * @author Eduard Fierro, Arley Rivera
  */
 public class Main {
+
     public static void main(String[] args) {
         Principal prin = new Principal();
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    FigurasGeometricas frame = new FigurasGeometricas();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+      
     }
-    
 }

@@ -9,10 +9,12 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Graphics;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.plaf.ColorUIResource;
 
 /**
  * Clase Super Padre de las figuras geometricas
@@ -31,6 +33,9 @@ public class FigurasGeometricas extends JFrame {
     //posicion x, y del tercer punto (C)
     private double coordenadaXC;
     private double coordenadaYC;
+    //posicion x, y del tercer punto (D)
+    private double coordenadaXD;
+    private double coordenadaYD;
     //Variable que guarda el area de las figuras
     private double area;
     //Variable que guarda el perimetro de las figuras
@@ -38,21 +43,23 @@ public class FigurasGeometricas extends JFrame {
     //Variable que guarda el tipo de figura 
     private String tipo;
     private String color;
+    private FigurasGeometricas figura;
     //Constructor de la clase
 
-    public FigurasGeometricas(double coordenadaXA, double coordenadaYA, double coordenadaXB, double coordenadaYB, double coordenadaXC, double coordenadaYC, String color) {
+    public FigurasGeometricas(double coordenadaXA, double coordenadaYA, double coordenadaXB, double coordenadaYB, double coordenadaXC, double coordenadaYC, double coordenadaXD, double coordenadaYD,String color) {
         this.coordenadaXA = coordenadaXA;
         this.coordenadaYA = coordenadaYA;
         this.coordenadaXB = coordenadaXB;
         this.coordenadaYB = coordenadaYB;
         this.coordenadaXC = coordenadaXC;
         this.coordenadaYC = coordenadaYC;
+        this.coordenadaXD = coordenadaXD;
+        this.coordenadaYD = coordenadaYD;
         this.color = color;
 
     }
 
     //Metodo que ayuda a calcular el lado de las figuras 
-
     public double hallarLado(double coordenadaXA, double coordenadaYA, double coordenadaXB, double coordenadaYB) {
         double auxiliarX = Math.pow(coordenadaXB - coordenadaXA, 2);
         double auxiliarY = Math.pow(coordenadaYB - coordenadaYA, 2);
@@ -60,32 +67,64 @@ public class FigurasGeometricas extends JFrame {
         return lado;
     }
 
-    public FigurasGeometricas() {
+    public FigurasGeometricas(FigurasGeometricas figura) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 450, 300);
+        //setBounds(100, 100, 450, 300);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
-        setBounds(0, 0, 800, 600);
+        setBounds(200, 0, 800, 600);
+        setResizable(false);
+        this.figura = figura;
     }
 
+    @Override
     public void paint(Graphics g) {
         super.paint(g);
-        g.setColor(Color.red);
-
-        /*g.drawLine((int) coordenadaXA*-100, (int)coordenadaYA*-100, (int)coordenadaXB*-100, (int)coordenadaYB*-100);
-        g.drawLine((int)coordenadaXB*-100, (int)coordenadaYB*-100, (int)coordenadaXC*-100, (int)coordenadaYC*-100);
-        g.drawLine((int)coordenadaXC*-100, (int)coordenadaYC*-100, (int)coordenadaXA*-100,(int)coordenadaYA*-100);*/
-        g.drawLine(100, 100, 300, 100);
-        g.drawLine(300, 100, 200, 300);
-        g.drawLine(200, 300, 100, 100);
-        
+        try{
+        Color c = new Color(Integer.parseInt(figura.getColor()));
+        g.setColor(c);
+        }catch(Exception ex){
+            System.out.println("El color debe ser un numero");
+            Color a = new Color(0);
+            g.setColor(a);
+        }        
+        if (figura instanceof Triangulo) {
+            int xa = (int) figura.getCoordenadaXA() * 10;
+            int ya = (int) figura.getCoordenadaYA() * 10;
+            int xb = (int) figura.getCoordenadaXB() * 10;
+            int yb = (int) figura.getCoordenadaYB() * 10;
+            int xc = (int) figura.getCoordenadaXC() * 10;
+            int yc = (int) figura.getCoordenadaYC() * 10;
+            
+            System.out.println(xa);
+            
+            g.drawLine(xa, ya, xb, yb);
+            g.drawLine(xb, yb, xc, yc);
+            g.drawLine(xc, yc, xa, ya);
+        }
+        if (figura instanceof Cuadrado) {
+            int xa = (int) figura.getCoordenadaXA() * 10;
+            int ya = (int) figura.getCoordenadaYA() * 10;
+            int xb = (int) figura.getCoordenadaXB() * 10;
+            int yb = (int) figura.getCoordenadaYB() * 10;
+            int xc = (int) figura.getCoordenadaXC() * 10;
+            int yc = (int) figura.getCoordenadaYC() * 10;
+            int xd = (int) figura.getCoordenadaXD() * 10;
+            int yd = (int) figura.getCoordenadaYD() * 10;
+            System.out.println(xa);
+            
+            g.drawLine(xa, ya, xb, yb);
+            g.drawLine(xb, yb, xc, yc);
+            g.drawLine(xc, yc, xd, yd);
+            g.drawLine(xd, yd, xa, ya);
+            
+        }
 
     }
 
     //Metodo get del area
-
     public double getArea() {
         return area;
     }
@@ -137,31 +176,26 @@ public class FigurasGeometricas extends JFrame {
     }
 
     //Metodo get de las coordenadas en X del punto C
-
     public double getCoordenadaXC() {
         return coordenadaXC;
     }
 
     //Metodo set de las coordenadas en X del punto C
-
     public void setCoordenadaXC(double coordenadaXC) {
         this.coordenadaXC = coordenadaXC;
     }
 
     //Metodo get de las coordenadas en Y del punto C
-
     public double getCoordenadaYC() {
         return coordenadaYC;
     }
 
     //Metodo set de las coordenadas en Y del punto C
-
     public void setCoordenadaYC(double coordenadaYC) {
         this.coordenadaYC = coordenadaYC;
     }
 
     //Metodo get del perimetro
-
     public double getPerimetro() {
         return perimetro;
     }
@@ -196,4 +230,21 @@ public class FigurasGeometricas extends JFrame {
     public void setColor(String color) {
         this.color = color;
     }
+
+    public double getCoordenadaXD() {
+        return coordenadaXD;
+    }
+
+    public void setCoordenadaXD(double coordenadaXD) {
+        this.coordenadaXD = coordenadaXD;
+    }
+
+    public double getCoordenadaYD() {
+        return coordenadaYD;
+    }
+
+    public void setCoordenadaYD(double coordenadaYD) {
+        this.coordenadaYD = coordenadaYD;
+    }
+    
 }

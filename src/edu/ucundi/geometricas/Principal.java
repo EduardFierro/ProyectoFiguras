@@ -107,7 +107,7 @@ public class Principal {
         coordenadaYD = scannerNumeros.nextDouble();
         System.out.println("digite el color para dibujar la figura: ");
         color = scannerLetra.nextLine();
-        Cuadrado cuadrado = new Cuadrado(coordenadaXC, coordenadaYC, coordenadaXA, coordenadaYA, coordenadaXB, coordenadaYB, coordenadaXD, coordenadaYD, color);
+        Cuadrado cuadrado = new Cuadrado(coordenadaXA, coordenadaYA, coordenadaXB, coordenadaYB,coordenadaXC, coordenadaYC, coordenadaXD, coordenadaYD, color);
         cuadrado.hallarDatos();
         listaFiguras.add(cuadrado);
     }
@@ -128,7 +128,7 @@ public class Principal {
         coordenadaYC = scannerNumeros.nextDouble();
         System.out.println("digite el color para dibujar la figura: ");
         color = scannerLetra.nextLine();
-        Triangulo triangulo = new Triangulo(coordenadaXC, coordenadaYC, coordenadaXA, coordenadaYA, coordenadaXB, coordenadaYB, color);
+        Triangulo triangulo = new Triangulo(coordenadaXA, coordenadaYA, coordenadaXB, coordenadaYB, coordenadaXC, coordenadaYC, color);
         triangulo.hallarDatos();
         listaFiguras.add(triangulo);
 

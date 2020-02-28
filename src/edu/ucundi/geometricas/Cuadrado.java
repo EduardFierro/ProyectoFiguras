@@ -17,14 +17,12 @@ public class Cuadrado extends FigurasGeometricas {
 
     //Variables que guardan los valores de los lados del cuadrado 
     private int lado1, lado2, lado3, lado4;
-    private double coordenadaXD, coordenadaYD;
+    //private double coordenadaXD, coordenadaYD;
 
     //Constructor de la clase
     public Cuadrado(double coordenadaXA, double coordenadaYA, double coordenadaXB, double coordenadaYB, double coordenadaXC, double coordenadaYC, double coordenadaXD, double coordenadaYD, String color) {
-        super(coordenadaXA, coordenadaYA, coordenadaXB, coordenadaYB, coordenadaXC, coordenadaYC, color);
-        this.coordenadaXD = coordenadaXD;
-        this.coordenadaYD = coordenadaYD;
-
+        super(coordenadaXA, coordenadaYA, coordenadaXB, coordenadaYB, coordenadaXC, coordenadaYC, coordenadaXD, coordenadaYD,color);
+        
     }
 
     public void hallarDatos() {
@@ -35,15 +33,10 @@ public class Cuadrado extends FigurasGeometricas {
         this.setArea(lado1 * lado2);
         this.setPerimetro(lado1 + lado2 + lado3 + lado4);
         hallarTipo();
+        FigurasGeometricas frame = new FigurasGeometricas(this);
+        frame.setVisible(true);
     }
-   /* public void paint(Graphics g) {
-        super.paint(g);
-        g.setColor (Color.red);
-       
-        int [] vx2 = {(int)coordenadaXA*100,(int)coordenadaXB*100, (int)coordenadaXC*100};
-        int [] vy2 = {(int)coordenadaYA*100, (int)coordenadaYB*100, (int)coordenadaYC*100};
-        g.fillPolygon (vx2, vy2, 3);
-    }*/
+  
 
     //Metodo get del primer lado de la figura
     public double getLado1() {
@@ -84,7 +77,7 @@ public class Cuadrado extends FigurasGeometricas {
     public void setLado4(int lado4) {
         this.lado4 = lado4;
     }
-
+/*
     //Metodo Get de la CoordenaXD de la figura
     public double getCoordenadaXD() {
         return coordenadaXD;
@@ -104,7 +97,7 @@ public class Cuadrado extends FigurasGeometricas {
     public void setCoordenadaYD(double coordenadaYD) {
         this.coordenadaYD = coordenadaYD;
     }
-
+*/
     public void hallarTipo() {
         if (lado1 == lado2 && lado2 == lado3 && lado3 == lado4) {
             this.setTipo("Cuadrado");
