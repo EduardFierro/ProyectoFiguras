@@ -5,6 +5,9 @@
  */
 package edu.ucundi.geometricas;
 
+import java.awt.Color;
+import java.awt.Graphics;
+
 /**
  * Clase Hija Triangulo 
  * @author Eduard Fierro, Arley Rivera
@@ -14,8 +17,8 @@ public class Triangulo extends FigurasGeometricas{
     //Variables que gusradan el valor de los lados del triangulo
     int lado1, lado2, lado3;
     //Constructor
-    public Triangulo(double coordenadaXC, double coordenadaYC, double coordenadaXA, double coordenadaYA, double coordenadaXB, double coordenadaYB) {
-        super(coordenadaXA, coordenadaYA, coordenadaXB, coordenadaYB, coordenadaXC, coordenadaYC);
+    public Triangulo(double coordenadaXC, double coordenadaYC, double coordenadaXA, double coordenadaYA, double coordenadaXB, double coordenadaYB, String color) {
+        super(coordenadaXA, coordenadaYA, coordenadaXB, coordenadaYB, coordenadaXC, coordenadaYC, color);
         
     }
     
@@ -37,7 +40,18 @@ public class Triangulo extends FigurasGeometricas{
         double area =  Math.sqrt((semiperimetro * ladoAux1 * ladoAux2 * ladoAux3));
         this.setArea(area);
     }
-    
+    //Metodo para pintar
+   public void paint(Graphics g) {
+        super.paint(g);
+        g.setColor (Color.red);
+        g.drawLine((int)super.getCoordenadaXA()*100, (int)super.getCoordenadaYA()*100, (int)super.getCoordenadaXB()*100, (int)super.getCoordenadaYB()*100);
+        g.drawLine((int)super.getCoordenadaXB()*100, (int)super.getCoordenadaYB()*100, (int)super.getCoordenadaXC()*100, (int)super.getCoordenadaYC()*100);
+        g.drawLine((int)super.getCoordenadaXC()*100, (int)super.getCoordenadaYC()*100, (int)super.getCoordenadaXA()*100, (int)super.getCoordenadaYA()*100);
+
+        /*int [] vx2 = {(int)super.getCoordenadaXA()*100,(int)super.getCoordenadaXB()*100, (int)super.getCoordenadaXC()*100};
+        int [] vy2 = {(int)super.getCoordenadaYA()*100, (int)super.getCoordenadaYB()*100, (int)super.getCoordenadaYC()*100};
+        g.fillPolygon (vx2, vy2, 3);*/
+    }
     //Metodo get del primer lado
     public double getLado1() {
         return lado1;

@@ -5,6 +5,9 @@
  */
 package edu.ucundi.geometricas;
 
+import java.awt.Color;
+import java.awt.Graphics;
+
 /**
  * Clase Hija cuadrado
  *
@@ -13,26 +16,34 @@ package edu.ucundi.geometricas;
 public class Cuadrado extends FigurasGeometricas {
 
     //Variables que guardan los valores de los lados del cuadrado 
-    private double lado1, lado2, lado3, lado4;
+    private int lado1, lado2, lado3, lado4;
     private double coordenadaXD, coordenadaYD;
 
     //Constructor de la clase
-    public Cuadrado(double coordenadaXA, double coordenadaYA, double coordenadaXB, double coordenadaYB, double coordenadaXC, double coordenadaYC, double coordenadaXD, double coordenadaYD) {
-        super(coordenadaXA, coordenadaYA, coordenadaXB, coordenadaYB, coordenadaXC, coordenadaYC);
+    public Cuadrado(double coordenadaXA, double coordenadaYA, double coordenadaXB, double coordenadaYB, double coordenadaXC, double coordenadaYC, double coordenadaXD, double coordenadaYD, String color) {
+        super(coordenadaXA, coordenadaYA, coordenadaXB, coordenadaYB, coordenadaXC, coordenadaYC, color);
         this.coordenadaXD = coordenadaXD;
         this.coordenadaYD = coordenadaYD;
 
     }
 
     public void hallarDatos() {
-        lado1 = hallarLado(this.getCoordenadaXA(), this.getCoordenadaYA(), this.getCoordenadaXB(), this.getCoordenadaYB());
-        lado2 = hallarLado(this.getCoordenadaXB(), this.getCoordenadaXC(), this.getCoordenadaYB(), this.getCoordenadaYC());
-        lado3 = hallarLado(this.getCoordenadaXC(), this.getCoordenadaXD(), this.getCoordenadaYC(), this.getCoordenadaYD());
-        lado4 = hallarLado(this.getCoordenadaXD(), this.getCoordenadaXA(), this.getCoordenadaYD(), this.getCoordenadaYA());
+        lado1 = (int) hallarLado(this.getCoordenadaXA(), this.getCoordenadaYA(), this.getCoordenadaXB(), this.getCoordenadaYB());
+        lado2 = (int) hallarLado(this.getCoordenadaXB(), this.getCoordenadaXC(), this.getCoordenadaYB(), this.getCoordenadaYC());
+        lado3 = (int) hallarLado(this.getCoordenadaXC(), this.getCoordenadaXD(), this.getCoordenadaYC(), this.getCoordenadaYD());
+        lado4 = (int) hallarLado(this.getCoordenadaXD(), this.getCoordenadaXA(), this.getCoordenadaYD(), this.getCoordenadaYA());
         this.setArea(lado1 * lado2);
         this.setPerimetro(lado1 + lado2 + lado3 + lado4);
         hallarTipo();
     }
+   /* public void paint(Graphics g) {
+        super.paint(g);
+        g.setColor (Color.red);
+       
+        int [] vx2 = {(int)coordenadaXA*100,(int)coordenadaXB*100, (int)coordenadaXC*100};
+        int [] vy2 = {(int)coordenadaYA*100, (int)coordenadaYB*100, (int)coordenadaYC*100};
+        g.fillPolygon (vx2, vy2, 3);
+    }*/
 
     //Metodo get del primer lado de la figura
     public double getLado1() {
@@ -40,7 +51,7 @@ public class Cuadrado extends FigurasGeometricas {
     }
     //Metodo set del primer lado de la figura
 
-    public void setLado1(double lado1) {
+    public void setLado1(int lado1) {
         this.lado1 = lado1;
     }
 
@@ -50,7 +61,7 @@ public class Cuadrado extends FigurasGeometricas {
     }
 
     //Metodo set del segundo lado de la figura
-    public void setLado2(double lado2) {
+    public void setLado2(int lado2) {
         this.lado2 = lado2;
     }
 
@@ -60,7 +71,7 @@ public class Cuadrado extends FigurasGeometricas {
     }
 
     //Metodo set del tercer lado de la figura
-    public void setLado3(double lado3) {
+    public void setLado3(int lado3) {
         this.lado3 = lado3;
     }
 
@@ -70,7 +81,7 @@ public class Cuadrado extends FigurasGeometricas {
     }
 
     //Metodo set del cuarto lado de la figura
-    public void setLado4(double lado4) {
+    public void setLado4(int lado4) {
         this.lado4 = lado4;
     }
 

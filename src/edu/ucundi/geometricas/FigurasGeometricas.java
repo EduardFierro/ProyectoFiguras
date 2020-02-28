@@ -5,12 +5,23 @@
  */
 package edu.ucundi.geometricas;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Graphics;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
 /**
  * Clase Super Padre de las figuras geometricas
+ *
  * @author Eduard Fierro, Arley Rivera
  */
-public class FigurasGeometricas {
-    
+public class FigurasGeometricas extends JFrame {
+
+    private JPanel contentPane;
     //posicion x, y del primer punto (A)
     private double coordenadaXA;
     private double coordenadaYA;
@@ -22,34 +33,59 @@ public class FigurasGeometricas {
     private double coordenadaYC;
     //Variable que guarda el area de las figuras
     private double area;
-     //Variable que guarda el perimetro de las figuras
+    //Variable que guarda el perimetro de las figuras
     private double perimetro;
     //Variable que guarda el tipo de figura 
     private String tipo;
-    //Pi que se usa para poder realizar calculos
-    public static final double PI = 3.1416;
-   
+    private String color;
     //Constructor de la clase
-    
-    public FigurasGeometricas(double coordenadaXA, double coordenadaYA, double coordenadaXB, double coordenadaYB, double coordenadaXC, double coordenadaYC ) {
+
+    public FigurasGeometricas(double coordenadaXA, double coordenadaYA, double coordenadaXB, double coordenadaYB, double coordenadaXC, double coordenadaYC, String color) {
         this.coordenadaXA = coordenadaXA;
         this.coordenadaYA = coordenadaYA;
         this.coordenadaXB = coordenadaXB;
         this.coordenadaYB = coordenadaYB;
         this.coordenadaXC = coordenadaXC;
         this.coordenadaYC = coordenadaYC;
-        
-        
+        this.color = color;
+
     }
+
     //Metodo que ayuda a calcular el lado de las figuras 
-    public double hallarLado(double coordenadaXA, double coordenadaYA, double coordenadaXB, double coordenadaYB){
+
+    public double hallarLado(double coordenadaXA, double coordenadaYA, double coordenadaXB, double coordenadaYB) {
         double auxiliarX = Math.pow(coordenadaXB - coordenadaXA, 2);
         double auxiliarY = Math.pow(coordenadaYB - coordenadaYA, 2);
-        double lado = Math.sqrt(auxiliarX +  auxiliarY);
+        double lado = Math.sqrt(auxiliarX + auxiliarY);
         return lado;
     }
-    
+
+    public FigurasGeometricas() {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 450, 300);
+        contentPane = new JPanel();
+        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        setContentPane(contentPane);
+        contentPane.setLayout(null);
+        setBounds(0, 0, 800, 600);
+    }
+
+    public void paint(Graphics g) {
+        super.paint(g);
+        g.setColor(Color.red);
+
+        /*g.drawLine((int) coordenadaXA*-100, (int)coordenadaYA*-100, (int)coordenadaXB*-100, (int)coordenadaYB*-100);
+        g.drawLine((int)coordenadaXB*-100, (int)coordenadaYB*-100, (int)coordenadaXC*-100, (int)coordenadaYC*-100);
+        g.drawLine((int)coordenadaXC*-100, (int)coordenadaYC*-100, (int)coordenadaXA*-100,(int)coordenadaYA*-100);*/
+        g.drawLine(100, 100, 300, 100);
+        g.drawLine(300, 100, 200, 300);
+        g.drawLine(200, 300, 100, 100);
+        
+
+    }
+
     //Metodo get del area
+
     public double getArea() {
         return area;
     }
@@ -58,7 +94,7 @@ public class FigurasGeometricas {
     public void setArea(double area) {
         this.area = area;
     }
-    
+
     //Metodo get de las coordenadas en X del punto A
     public double getCoordenadaXA() {
         return coordenadaXA;
@@ -96,26 +132,36 @@ public class FigurasGeometricas {
 
     //Metodo set de las coordenadas en Y del punto B
     public void setCoordenadaYB(double coordenadaYB) {
-        
+
         this.coordenadaYB = coordenadaYB;
     }
+
     //Metodo get de las coordenadas en X del punto C
+
     public double getCoordenadaXC() {
         return coordenadaXC;
     }
+
     //Metodo set de las coordenadas en X del punto C
+
     public void setCoordenadaXC(double coordenadaXC) {
         this.coordenadaXC = coordenadaXC;
     }
+
     //Metodo get de las coordenadas en Y del punto C
+
     public double getCoordenadaYC() {
         return coordenadaYC;
     }
+
     //Metodo set de las coordenadas en Y del punto C
+
     public void setCoordenadaYC(double coordenadaYC) {
         this.coordenadaYC = coordenadaYC;
     }
+
     //Metodo get del perimetro
+
     public double getPerimetro() {
         return perimetro;
     }
@@ -134,5 +180,20 @@ public class FigurasGeometricas {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-    
+
+    public JPanel getContentPane() {
+        return contentPane;
+    }
+
+    public void setContentPane(JPanel contentPane) {
+        this.contentPane = contentPane;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
 }

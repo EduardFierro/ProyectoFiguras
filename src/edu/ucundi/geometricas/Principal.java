@@ -19,10 +19,11 @@ public class Principal {
     //Lista que guarda todas las figuras que se crean
     private List<FigurasGeometricas> listaFiguras = new ArrayList<>();
     //Variable que guarda la respuesta para proximas figuras
-    private String color;
-    int respuesta;
+    public String color;
+    public int respuesta;
     //Variables que permite obtener lo escrito en consola
     Scanner scannerNumeros = new Scanner(System.in);
+    Scanner scannerLetra = new Scanner(System.in);
 
     //posicion x, y del primer punto (A)
     private double coordenadaXA;
@@ -36,7 +37,7 @@ public class Principal {
     //posicion x, y del Cuarto punto (D)
     private double coordenadaXD;
     private double coordenadaYD;
-    
+
     public Principal() {
 
         System.out.println("Que figura desea ingresar?: ");
@@ -45,7 +46,7 @@ public class Principal {
         System.out.print(": ");
 
         respuesta = scannerNumeros.nextInt();
-
+        
         switch (respuesta) {
             case 1:
                 datosTriangulo();
@@ -79,6 +80,7 @@ public class Principal {
                 System.out.println("Lado 2: " + ((Triangulo) lista).getLado2());
                 System.out.println("Lado 3: " + ((Triangulo) lista).getLado3());
                 System.out.println("Area: " + ((Triangulo) lista).getArea());
+                System.out.println("Perimetro: " + ((Triangulo) lista).getPerimetro());
             }
 
             System.out.println("--------------------------------------");
@@ -103,7 +105,9 @@ public class Principal {
         coordenadaXD = scannerNumeros.nextDouble();
         System.out.print("Ingrese coordenada Y del cuarto punto: ");
         coordenadaYD = scannerNumeros.nextDouble();
-        Cuadrado cuadrado = new Cuadrado(coordenadaXC, coordenadaYC, coordenadaXA, coordenadaYA, coordenadaXB, coordenadaYB, coordenadaXD, coordenadaYD);
+        System.out.println("digite el color para dibujar la figura: ");
+        color = scannerLetra.nextLine();
+        Cuadrado cuadrado = new Cuadrado(coordenadaXC, coordenadaYC, coordenadaXA, coordenadaYA, coordenadaXB, coordenadaYB, coordenadaXD, coordenadaYD, color);
         cuadrado.hallarDatos();
         listaFiguras.add(cuadrado);
     }
@@ -122,9 +126,14 @@ public class Principal {
         coordenadaXC = scannerNumeros.nextDouble();
         System.out.print("Ingrese coordenada Y del tercer punto: ");
         coordenadaYC = scannerNumeros.nextDouble();
-        Triangulo triangulo = new Triangulo(coordenadaXC, coordenadaYC, coordenadaXA, coordenadaYA, coordenadaXB, coordenadaYB);
+        System.out.println("digite el color para dibujar la figura: ");
+        color = scannerLetra.nextLine();
+        Triangulo triangulo = new Triangulo(coordenadaXC, coordenadaYC, coordenadaXA, coordenadaYA, coordenadaXB, coordenadaYB, color);
         triangulo.hallarDatos();
         listaFiguras.add(triangulo);
+
     }
+
+    
 
 }
