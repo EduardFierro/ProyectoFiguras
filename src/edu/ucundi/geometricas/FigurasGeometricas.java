@@ -11,21 +11,19 @@ import java.awt.EventQueue;
 import java.awt.Graphics;
 import java.util.List;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.plaf.ColorUIResource;
-
 /**
  * Clase Super Padre de las figuras geometricas
  *
  * @author Eduard Fierro, Arley Rivera
  */
-public class FigurasGeometricas extends JFrame {
+public abstract class FigurasGeometricas implements IFiguras {
 
-    private JPanel contentPane;
     //posicion x, y del primer punto (A)
     private double coordenadaXA;
+
+    /**
+     *
+     */
     private double coordenadaYA;
     //posicion x, y del segundo punto (B)
     private double coordenadaXB;
@@ -43,10 +41,9 @@ public class FigurasGeometricas extends JFrame {
     //Variable que guarda el tipo de figura 
     private String tipo;
     private String color;
-    private FigurasGeometricas figura;
-    //Constructor de la clase
 
-    public FigurasGeometricas(double coordenadaXA, double coordenadaYA, double coordenadaXB, double coordenadaYB, double coordenadaXC, double coordenadaYC, double coordenadaXD, double coordenadaYD,String color) {
+    //Constructor de la clase
+    public FigurasGeometricas(double coordenadaXA, double coordenadaYA, double coordenadaXB, double coordenadaYB, double coordenadaXC, double coordenadaYC, double coordenadaXD, double coordenadaYD, String color) {
         this.coordenadaXA = coordenadaXA;
         this.coordenadaYA = coordenadaYA;
         this.coordenadaXB = coordenadaXB;
@@ -65,63 +62,6 @@ public class FigurasGeometricas extends JFrame {
         double auxiliarY = Math.pow(coordenadaYB - coordenadaYA, 2);
         double lado = Math.sqrt(auxiliarX + auxiliarY);
         return lado;
-    }
-
-    public FigurasGeometricas(FigurasGeometricas figura) {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //setBounds(100, 100, 450, 300);
-        contentPane = new JPanel();
-        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-        setContentPane(contentPane);
-        contentPane.setLayout(null);
-        setBounds(200, 0, 800, 600);
-        setResizable(false);
-        this.figura = figura;
-    }
-
-    @Override
-    public void paint(Graphics g) {
-        super.paint(g);
-        try{
-        Color c = new Color(Integer.parseInt(figura.getColor()));
-        g.setColor(c);
-        }catch(Exception ex){
-            System.out.println("El color debe ser un numero");
-            Color a = new Color(0);
-            g.setColor(a);
-        }        
-        if (figura instanceof Triangulo) {
-            int xa = (int) figura.getCoordenadaXA() * 10;
-            int ya = (int) figura.getCoordenadaYA() * 10;
-            int xb = (int) figura.getCoordenadaXB() * 10;
-            int yb = (int) figura.getCoordenadaYB() * 10;
-            int xc = (int) figura.getCoordenadaXC() * 10;
-            int yc = (int) figura.getCoordenadaYC() * 10;
-            
-            System.out.println(xa);
-            
-            g.drawLine(xa, ya, xb, yb);
-            g.drawLine(xb, yb, xc, yc);
-            g.drawLine(xc, yc, xa, ya);
-        }
-        if (figura instanceof Cuadrado) {
-            int xa = (int) figura.getCoordenadaXA() * 10;
-            int ya = (int) figura.getCoordenadaYA() * 10;
-            int xb = (int) figura.getCoordenadaXB() * 10;
-            int yb = (int) figura.getCoordenadaYB() * 10;
-            int xc = (int) figura.getCoordenadaXC() * 10;
-            int yc = (int) figura.getCoordenadaYC() * 10;
-            int xd = (int) figura.getCoordenadaXD() * 10;
-            int yd = (int) figura.getCoordenadaYD() * 10;
-            System.out.println(xa);
-            
-            g.drawLine(xa, ya, xb, yb);
-            g.drawLine(xb, yb, xc, yc);
-            g.drawLine(xc, yc, xd, yd);
-            g.drawLine(xd, yd, xa, ya);
-            
-        }
-
     }
 
     //Metodo get del area
@@ -215,14 +155,6 @@ public class FigurasGeometricas extends JFrame {
         this.tipo = tipo;
     }
 
-    public JPanel getContentPane() {
-        return contentPane;
-    }
-
-    public void setContentPane(JPanel contentPane) {
-        this.contentPane = contentPane;
-    }
-
     public String getColor() {
         return color;
     }
@@ -246,5 +178,5 @@ public class FigurasGeometricas extends JFrame {
     public void setCoordenadaYD(double coordenadaYD) {
         this.coordenadaYD = coordenadaYD;
     }
-    
+
 }

@@ -5,18 +5,12 @@
  */
 package edu.ucundi.geometricas;
 
-import java.awt.EventQueue;
-
 /**
- * Clase Main de ejecucion del programa
  *
- * @author Eduard Fierro, Arley Rivera
+ * @author Eduard Fierro
  */
-public class Main {
-
-    public static void main(String[] args) {
-        Principal prin = new Principal();
-        
+public interface IFiguras {
      
-    }
+     public  void hallarTipo(); 
+     public void hallarDatos();
 }

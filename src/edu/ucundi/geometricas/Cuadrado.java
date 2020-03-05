@@ -25,6 +25,7 @@ public class Cuadrado extends FigurasGeometricas {
         
     }
 
+    @Override
     public void hallarDatos() {
         lado1 = (int) hallarLado(this.getCoordenadaXA(), this.getCoordenadaYA(), this.getCoordenadaXB(), this.getCoordenadaYB());
         lado2 = (int) hallarLado(this.getCoordenadaXB(), this.getCoordenadaXC(), this.getCoordenadaYB(), this.getCoordenadaYC());
@@ -33,7 +34,7 @@ public class Cuadrado extends FigurasGeometricas {
         this.setArea(lado1 * lado2);
         this.setPerimetro(lado1 + lado2 + lado3 + lado4);
         hallarTipo();
-        FigurasGeometricas frame = new FigurasGeometricas(this);
+        Pintar frame = new Pintar(this);
         frame.setVisible(true);
     }
   
@@ -77,27 +78,8 @@ public class Cuadrado extends FigurasGeometricas {
     public void setLado4(int lado4) {
         this.lado4 = lado4;
     }
-/*
-    //Metodo Get de la CoordenaXD de la figura
-    public double getCoordenadaXD() {
-        return coordenadaXD;
-    }
 
-    //Metodo set de la CoordenaXD de la figura
-    public void setCoordenadaXD(double coordenadaXD) {
-        this.coordenadaXD = coordenadaXD;
-    }
-
-    //Metodo get de la CoordenaYD de la figura
-    public double getCoordenadaYD() {
-        return coordenadaYD;
-    }
-
-    //Metodo set de la CoordenaYD de la figura
-    public void setCoordenadaYD(double coordenadaYD) {
-        this.coordenadaYD = coordenadaYD;
-    }
-*/
+    @Override
     public void hallarTipo() {
         if (lado1 == lado2 && lado2 == lado3 && lado3 == lado4) {
             this.setTipo("Cuadrado");
@@ -109,5 +91,6 @@ public class Cuadrado extends FigurasGeometricas {
         }
 
     }
+
 
 }

@@ -16,15 +16,28 @@ import java.awt.Graphics;
 public class Triangulo extends FigurasGeometricas {
 
     //Variables que gusradan el valor de los lados del triangulo
+    /**
+     * 
+     */
     int lado1, lado2, lado3;
 
     //Constructor
-
+    /** 
+     * 
+     * @param coordenadaXA
+     * @param coordenadaYA
+     * @param coordenadaXB
+     * @param coordenadaYB
+     * @param coordenadaXC
+     * @param coordenadaYC
+     * @param color 
+     */
     public Triangulo(double coordenadaXA, double coordenadaYA, double coordenadaXB, double coordenadaYB, double coordenadaXC, double coordenadaYC, String color) {
         super(coordenadaXA, coordenadaYA, coordenadaXB, coordenadaYB, coordenadaXC, coordenadaYC, 0, 0, color);
 
     }
 
+    @Override
     public void hallarDatos() {
         lado1 = (int) hallarLado(this.getCoordenadaXA(), this.getCoordenadaYA(), this.getCoordenadaXB(), this.getCoordenadaYB());
         lado2 = (int) hallarLado(this.getCoordenadaXB(), this.getCoordenadaYB(), this.getCoordenadaXC(), this.getCoordenadaYC());
@@ -33,7 +46,7 @@ public class Triangulo extends FigurasGeometricas {
         hallarAreaTriangulo();
         hallarTipo();
         
-        FigurasGeometricas frame = new FigurasGeometricas(this);
+        Pintar frame = new Pintar(this);
         frame.setVisible(true);
     }
 
@@ -81,6 +94,7 @@ public class Triangulo extends FigurasGeometricas {
         this.lado3 = lado3;
     }
 
+    @Override
     public void hallarTipo() {
         if (lado1 == lado2 && lado1 == lado3 && lado2 == lado3) {
             this.setTipo("Triangulo Equilatero");
