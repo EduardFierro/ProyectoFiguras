@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package edu.ucundi.geometricas;
 
 import java.awt.Color;
@@ -11,15 +7,23 @@ import java.awt.Graphics;
 /**
  * Clase Hija cuadrado
  *
- * @author Eduard Fierro, Arley Rivera
+ * @author Eduard Fierro
+ * @author Arley Rivera
  */
 public class Cuadrado extends FigurasGeometricas {
-
-    //Variables que guardan los valores de los lados del cuadrado 
     private int lado1, lado2, lado3, lado4;
-    //private double coordenadaXD, coordenadaYD;
-
-    //Constructor de la clase
+    /**
+     * Constructor de la clase
+     * @param coordenadaXA
+     * @param coordenadaYA
+     * @param coordenadaXB
+     * @param coordenadaYB
+     * @param coordenadaXC
+     * @param coordenadaYC
+     * @param coordenadaXD
+     * @param coordenadaYD
+     * @param color 
+     */
     public Cuadrado(double coordenadaXA, double coordenadaYA, double coordenadaXB, double coordenadaYB, double coordenadaXC, double coordenadaYC, double coordenadaXD, double coordenadaYD, String color) {
         super(coordenadaXA, coordenadaYA, coordenadaXB, coordenadaYB, coordenadaXC, coordenadaYC, coordenadaXD, coordenadaYD,color);
         
@@ -37,48 +41,63 @@ public class Cuadrado extends FigurasGeometricas {
         Pintar frame = new Pintar(this);
         frame.setVisible(true);
     }
-  
-
-    //Metodo get del primer lado de la figura
+    /**
+     * Metodo get del primer lado de la figura
+     * @return 
+     */
     public double getLado1() {
         return lado1;
     }
-    //Metodo set del primer lado de la figura
-
+    /**
+     * Metodo set del primer lado de la figura
+     * @param lado1 
+     */
     public void setLado1(int lado1) {
         this.lado1 = lado1;
     }
-
-    //Metodo get del segundo lado de la figura
+    /**
+     * Metodo get del segundo lado de la figura
+     * @return 
+     */
     public double getLado2() {
         return lado2;
     }
-
-    //Metodo set del segundo lado de la figura
+    /**
+     * Metodo set del segundo lado de la figura
+     * @param lado2 
+     */
     public void setLado2(int lado2) {
         this.lado2 = lado2;
     }
-
-    //Metodo get del tercer lado de la figura
+    /**
+     * Metodo get del tercer lado de la figura
+     * @return 
+     */
     public double getLado3() {
         return lado3;
     }
-
-    //Metodo set del tercer lado de la figura
+    /**
+     * Metodo set del tercer lado de la figura
+     * @param lado3 
+     */
     public void setLado3(int lado3) {
         this.lado3 = lado3;
     }
-
-    //Metodo get del cuarto lado de la figura
+    /**
+     * Metodo get del cuarto lado de la figura
+     * @return 
+     */
     public double getLado4() {
         return lado4;
     }
-
-    //Metodo set del cuarto lado de la figura
+    /**
+     * Metodo set del cuarto lado de la figura
+     * @param lado4 
+     */
     public void setLado4(int lado4) {
         this.lado4 = lado4;
     }
-
+    
     @Override
     public void hallarTipo() {
         if (lado1 == lado2 && lado2 == lado3 && lado3 == lado4) {

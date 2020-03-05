@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.ucundi.geometricas;
 
 import java.awt.Color;
@@ -11,26 +6,23 @@ import java.awt.Graphics;
 /**
  * Clase Hija Triangulo
  *
- * @author Eduard Fierro, Arley Rivera
+ * @author Eduard Fierro
+ * @author Arley Rivera
  */
 public class Triangulo extends FigurasGeometricas {
 
-    //Variables que gusradan el valor de los lados del triangulo
-    /**
-     * 
-     */
     int lado1, lado2, lado3;
 
-    //Constructor
-    /** 
-     * 
+    /**
+     * Constructor
+     *
      * @param coordenadaXA
      * @param coordenadaYA
      * @param coordenadaXB
      * @param coordenadaYB
      * @param coordenadaXC
      * @param coordenadaYC
-     * @param color 
+     * @param color
      */
     public Triangulo(double coordenadaXA, double coordenadaYA, double coordenadaXB, double coordenadaYB, double coordenadaXC, double coordenadaYC, String color) {
         super(coordenadaXA, coordenadaYA, coordenadaXB, coordenadaYB, coordenadaXC, coordenadaYC, 0, 0, color);
@@ -45,13 +37,14 @@ public class Triangulo extends FigurasGeometricas {
         this.setPerimetro(lado1 + lado2 + lado3);
         hallarAreaTriangulo();
         hallarTipo();
-        
+
         Pintar frame = new Pintar(this);
         frame.setVisible(true);
     }
 
-    //Metodo que halla el area de la figura
-
+    /**
+     * Metodo que halla el area de la figura
+     */
     public void hallarAreaTriangulo() {
         double semiperimetro = (lado1 + lado2 + lado3) / 2;
         double ladoAux1 = semiperimetro - lado1;
@@ -61,35 +54,57 @@ public class Triangulo extends FigurasGeometricas {
         double area = Math.sqrt((semiperimetro * ladoAux1 * ladoAux2 * ladoAux3));
         this.setArea(area);
     }
-    
 
-    //Metodo get del primer lado
-
+    /**
+     * Metodo get del primer lado
+     *
+     * @return
+     */
     public double getLado1() {
         return lado1;
     }
 
-    //Metodo set del primer lado
+    /**
+     * Metodo set del primer lado
+     *
+     * @param lado1
+     */
     public void setLado1(int lado1) {
         this.lado1 = lado1;
     }
 
-    //Metodo get del segundo lado
+    /**
+     * Metodo get del segundo lado
+     *
+     * @return
+     */
     public double getLado2() {
         return lado2;
     }
 
-    //Metodo set del segundo lado
+    /**
+     * Metodo set del segundo lado
+     *
+     * @param lado2
+     */
     public void setLado2(int lado2) {
         this.lado2 = lado2;
     }
 
-    //Metodo get del tercer lado
+    /**
+     * Metodo get del tercer lado
+     *
+     * @return
+     */
     public double getLado3() {
         return lado3;
     }
 
-    //Metodo set del tercer lado
+    /**
+     * Metodo set del tercer lado
+     *
+     * @param lado3
+     */
     public void setLado3(int lado3) {
         this.lado3 = lado3;
     }

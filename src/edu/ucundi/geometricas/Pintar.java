@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.ucundi.geometricas;
 
 import java.awt.Color;
@@ -14,11 +9,15 @@ import javax.swing.border.EmptyBorder;
 /**
  *
  * @author Eduard Fierro
+ * @author jersson arley
  */
 public class Pintar extends JFrame{
      private JPanel contentPane;
      private FigurasGeometricas figura;
-    
+    /**
+     * 
+     * @param figura 
+     */
     public Pintar(FigurasGeometricas figura) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //setBounds(100, 100, 450, 300);
@@ -31,7 +30,10 @@ public class Pintar extends JFrame{
         this.figura = figura;
     }
 
-    
+    /**
+     * 
+     * @param g 
+     */
      @Override
     public void paint(Graphics g) {
         super.paint(g);
@@ -50,9 +52,7 @@ public class Pintar extends JFrame{
             int yb = (int) figura.getCoordenadaYB() * 10;
             int xc = (int) figura.getCoordenadaXC() * 10;
             int yc = (int) figura.getCoordenadaYC() * 10;
-            
-            System.out.println(xa);
-            
+          
             g.drawLine(xa, ya, xb, yb);
             g.drawLine(xb, yb, xc, yc);
             g.drawLine(xc, yc, xa, ya);
@@ -66,8 +66,7 @@ public class Pintar extends JFrame{
             int yc = (int) figura.getCoordenadaYC() * 10;
             int xd = (int) figura.getCoordenadaXD() * 10;
             int yd = (int) figura.getCoordenadaYD() * 10;
-            System.out.println(xa);
-            
+           
             g.drawLine(xa, ya, xb, yb);
             g.drawLine(xb, yb, xc, yc);
             g.drawLine(xc, yc, xd, yd);

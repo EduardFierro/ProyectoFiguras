@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.ucundi.geometricas;
 
 import java.awt.BorderLayout;
@@ -18,31 +13,37 @@ import java.util.List;
  */
 public abstract class FigurasGeometricas implements IFiguras {
 
-    //posicion x, y del primer punto (A)
     private double coordenadaXA;
-
-    /**
-     *
-     */
     private double coordenadaYA;
-    //posicion x, y del segundo punto (B)
+
     private double coordenadaXB;
     private double coordenadaYB;
-    //posicion x, y del tercer punto (C)
+
     private double coordenadaXC;
     private double coordenadaYC;
-    //posicion x, y del tercer punto (D)
+
     private double coordenadaXD;
     private double coordenadaYD;
-    //Variable que guarda el area de las figuras
+
     private double area;
-    //Variable que guarda el perimetro de las figuras
+
     private double perimetro;
-    //Variable que guarda el tipo de figura 
+
     private String tipo;
     private String color;
 
-    //Constructor de la clase
+    /**
+     *
+     * @param coordenadaXA
+     * @param coordenadaYA
+     * @param coordenadaXB
+     * @param coordenadaYB
+     * @param coordenadaXC
+     * @param coordenadaYC
+     * @param coordenadaXD
+     * @param coordenadaYD
+     * @param color
+     */
     public FigurasGeometricas(double coordenadaXA, double coordenadaYA, double coordenadaXB, double coordenadaYB, double coordenadaXC, double coordenadaYC, double coordenadaXD, double coordenadaYD, String color) {
         this.coordenadaXA = coordenadaXA;
         this.coordenadaYA = coordenadaYA;
@@ -56,7 +57,15 @@ public abstract class FigurasGeometricas implements IFiguras {
 
     }
 
-    //Metodo que ayuda a calcular el lado de las figuras 
+    /**
+     * Metodo que ayuda a calcular el lado de las figuras
+     *
+     * @param coordenadaXA
+     * @param coordenadaYA
+     * @param coordenadaXB
+     * @param coordenadaYB
+     * @return
+     */
     public double hallarLado(double coordenadaXA, double coordenadaYA, double coordenadaXB, double coordenadaYB) {
         double auxiliarX = Math.pow(coordenadaXB - coordenadaXA, 2);
         double auxiliarY = Math.pow(coordenadaYB - coordenadaYA, 2);
@@ -64,117 +73,213 @@ public abstract class FigurasGeometricas implements IFiguras {
         return lado;
     }
 
-    //Metodo get del area
+    /**
+     * Metodo get del area
+     *
+     * @return
+     */
     public double getArea() {
         return area;
     }
 
-    //Metodo set del area
+    /**
+     * Metodo set del area
+     *
+     * @param area
+     */
     public void setArea(double area) {
         this.area = area;
     }
 
-    //Metodo get de las coordenadas en X del punto A
+    /**
+     * Metodo get de las coordenadas en X del punto A
+     *
+     * @return
+     */
     public double getCoordenadaXA() {
         return coordenadaXA;
     }
 
-    //Metodo set de las coordenadas en X del punto A
+    /**
+     * Metodo set de las coordenadas en X del punto A
+     *
+     * @param coordenadaXA
+     */
     public void setCoordenadaXA(double coordenadaXA) {
         this.coordenadaXA = coordenadaXA;
     }
 
-    //Metodo get de las coordenadas en Y del punto A
+    /**
+     * Metodo get de las coordenadas en Y del punto A
+     *
+     * @return
+     */
     public double getCoordenadaYA() {
         return coordenadaYA;
     }
 
-    //Metodo set de las coordenadas en Y del punto A
+    /**
+     * Metodo set de las coordenadas en Y del punto A
+     *
+     * @param coordenadaYA
+     */
     public void setCoordenadaYA(double coordenadaYA) {
         this.coordenadaYA = coordenadaYA;
     }
 
-    //Metodo get de las coordenadas en X del punto B
+    /**
+     * Metodo get de las coordenadas en X del punto B
+     *
+     * @return
+     */
     public double getCoordenadaXB() {
         return coordenadaXB;
     }
 
-    //Metodo set de las coordenadas en X del punto B
+    /**
+     * Metodo set de las coordenadas en X del punto B
+     *
+     * @param coordenadaXB
+     */
     public void setCoordenadaXB(double coordenadaXB) {
         this.coordenadaXB = coordenadaXB;
     }
 
-    //Metodo get de las coordenadas en Y del punto B
+    /**
+     * Metodo get de las coordenadas en Y del punto B
+     *
+     * @return
+     */
     public double getCoordenadaYB() {
         return coordenadaYB;
     }
 
-    //Metodo set de las coordenadas en Y del punto B
+    /**
+     * Metodo set de las coordenadas en Y del punto B
+     *
+     * @param coordenadaYB
+     */
     public void setCoordenadaYB(double coordenadaYB) {
 
         this.coordenadaYB = coordenadaYB;
     }
 
-    //Metodo get de las coordenadas en X del punto C
+    /**
+     * Metodo get de las coordenadas en X del punto C
+     *
+     * @return
+     */
     public double getCoordenadaXC() {
         return coordenadaXC;
     }
 
-    //Metodo set de las coordenadas en X del punto C
+    /**
+     * Metodo set de las coordenadas en X del punto C
+     *
+     * @param coordenadaXC
+     */
     public void setCoordenadaXC(double coordenadaXC) {
         this.coordenadaXC = coordenadaXC;
     }
 
-    //Metodo get de las coordenadas en Y del punto C
+    /**
+     * Metodo get de las coordenadas en Y del punto C
+     *
+     * @return
+     */
     public double getCoordenadaYC() {
         return coordenadaYC;
     }
 
-    //Metodo set de las coordenadas en Y del punto C
+    /**
+     * Metodo set de las coordenadas en Y del punto C
+     *
+     * @param coordenadaYC
+     */
     public void setCoordenadaYC(double coordenadaYC) {
         this.coordenadaYC = coordenadaYC;
     }
 
-    //Metodo get del perimetro
+    /**
+     * Metodo get del perimetro
+     *
+     * @return
+     */
     public double getPerimetro() {
         return perimetro;
     }
 
-    //Metodo set del perimetro
+    /**
+     * Metodo set del perimetro
+     *
+     * @param perimetro
+     */
     public void setPerimetro(double perimetro) {
         this.perimetro = perimetro;
     }
 
-    //Metodo get del tipo de figura
+    /**
+     * Metodo get del tipo de figura
+     *
+     * @return
+     */
     public String getTipo() {
         return tipo;
     }
 
-    //Metodo set del tipo de figura
+    /**
+     * Metodo set del tipo de figura
+     *
+     * @param tipo
+     */
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getColor() {
         return color;
     }
 
+    /**
+     *
+     * @param color
+     */
     public void setColor(String color) {
         this.color = color;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getCoordenadaXD() {
         return coordenadaXD;
     }
 
+    /**
+     *
+     * @param coordenadaXD
+     */
     public void setCoordenadaXD(double coordenadaXD) {
         this.coordenadaXD = coordenadaXD;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getCoordenadaYD() {
         return coordenadaYD;
     }
 
+    /**
+     *
+     * @param coordenadaYD
+     */
     public void setCoordenadaYD(double coordenadaYD) {
         this.coordenadaYD = coordenadaYD;
     }
